@@ -131,6 +131,7 @@ blockList.append(['door_wood_upper', 'oak_door_top'])
 blockList.append(['door_iron_lower', 'iron_door_bottom'])
 blockList.append(['door_iron_upper', 'iron_door_top'])
 blockList.append(['trapdoor', 'oak_trapdoor'])
+blockList.append(['sapling_roofed_oak', 'dark_oak_sapling'])
 
 #BLOCKLIST： Plants
 flowerList = [

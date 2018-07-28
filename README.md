@@ -6,6 +6,9 @@ Here is a list of the changes: https://minecraft.gamepedia.com/1.13/Flattening
 
 This tool will automatically **rename all files** & **convert all models** & **generate new format textures from the selected resource pack**(such as particles, horses, map icons...). I tested it for [Mizuno's 16 Craft](https://www.planetminecraft.com/texture_pack/mizunos-16-craft/) (my girlfriend's faverate pack) and [ZigZag](http://www.jmckiernan.com/), it works just fine.
 
+![in Mizuno's 16 Craft](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-29/56727928.jpg)
+![in ZigZag](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-29/77056924.jpg)
+
 It might not convert everything perfectly, however it offers a easiest way to get your pack compatible with 1.13 quickly.
 - **For Creators**: it provides a starting pack from your old version.
 - **For Players**: you don't have to wait the pack's author to update.
@@ -17,7 +20,7 @@ It might not convert everything perfectly, however it offers a easiest way to ge
 - generate new format textures from the selected resource pack(such as particles, horses, map icons...)
 
 ## How to use
-- [Download released](https://github.com/icrdr/Resource-Pack-Converter/releases/)([mirror](https://www.dropbox.com/sh/a3uvn4e6neres0a/AABzY3vAp4eTEmC7pUR6Pk0Fa?dl=0))
+- [Download released](https://github.com/icrdr/Resource-Pack-Converter/releases/) ([mirror](https://www.dropbox.com/sh/a3uvn4e6neres0a/AABzY3vAp4eTEmC7pUR6Pk0Fa?dl=0))
 - Run Resource_Pack_Converter.exe
 - Select the resource pack
 - Set the pack's resolution

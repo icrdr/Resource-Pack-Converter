@@ -61,8 +61,8 @@ slider_res.pack(fill = tk.BOTH, expand = 1)
 slider_label = tk.Label(root, text='resolution: 16X')
 slider_scale = tk.Scale(
     root,
-    from_=1,
-    to=7,
+    from_=0,
+    to=6,
     orient=tk.HORIZONTAL,
     variable = res_r,
     command=show_values

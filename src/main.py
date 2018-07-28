@@ -443,6 +443,7 @@ entityList.append(['endercrystal/endercrystal_beam', 'endercrystal/end_crystal_b
 
 def init(pack,res_r):
     global RES_R, PACK, MAIN_PATH, TEX_PATH, block_path, item_path, entity_path
+    if(res_r<1):res_r=1
     RES_R = int(math.pow(2, res_r-1))
     PACK = pack
     MAIN_PATH = PACK + '/assets/minecraft/'
@@ -569,19 +570,25 @@ def changeModel():
         alter(file, 'items/', 'item/')
         print (file + " is OK")
 
-    blockModelList = os.listdir(MAIN_PATH + 'models/block/')
-    itemModelList = os.listdir(MAIN_PATH + 'models/item/')
+    if(os.path.exists(MAIN_PATH + 'models/block/')):
+        blockModelList = (file for file in os.listdir(MAIN_PATH + 'models/block/')
+                 if file.endswith('.json'))
+        for model in blockModelList:
+            alterAll(MAIN_PATH + 'models/block/' + model)
 
-    for model in blockModelList:
-        alterAll(MAIN_PATH + 'models/block/' + model)
-    for model in itemModelList:
-        alterAll(MAIN_PATH + 'models/item/' + model)
+    if(os.path.exists(MAIN_PATH + 'models/item/')):
+        itemModelList = (file for file in os.listdir(MAIN_PATH + 'models/item/')
+                 if file.endswith('.json'))
+        for model in itemModelList:
+            alterAll(MAIN_PATH + 'models/item/' + model)
 
-    blockstateList = os.listdir(MAIN_PATH + 'blockstates/')
-    for state in blockstateList:
-        #for 1.13
-        alter(MAIN_PATH + 'blockstates/' + state, '"model": "block/', '"model": "')
-        alter(MAIN_PATH + 'blockstates/' + state, '"model": "', '"model": "block/')
+    if(os.path.exists(MAIN_PATH + 'blockstates/')):
+        blockstateList = (file for file in os.listdir(MAIN_PATH + 'blockstates/')
+                 if file.endswith('.json'))
+        for state in blockstateList:
+            #for 1.13
+            alter(MAIN_PATH + 'blockstates/' + state, '"model": "block/', '"model": "')
+            alter(MAIN_PATH + 'blockstates/' + state, '"model": "', '"model": "block/')
 
     def changeTorchState(_str):
         try:
@@ -665,7 +672,7 @@ def resizeTex():
     def cutImg(img,y1,y2,x1,x2):
         return img[y1*RES_R:y2*RES_R, x1*RES_R:x2*RES_R, :]
 
-    try:
+    if(os.path.exists(TEX_PATH + 'particle/particles.png')):
         p_img = cv2.imread(TEX_PATH + 'particle/particles.png',-1)
         if(p_img.shape[0] != 256 * RES_R or p_img.shape[1] != 256 * RES_R):
             p_o_img = cv2.imread(resource_path('particles.png'),-1)
@@ -680,10 +687,8 @@ def resizeTex():
             print(TEX_PATH + 'particle/particles.png' + ' conversion is OK')
         #cv2.imshow("image", n_p_img)
         #cv2.waitKey(0)
-    except IOError:
-        print ("Error: fail to read particle")
 
-    try:
+    if(os.path.exists(TEX_PATH + 'map/map_icons.png')):
         m_img = cv2.imread(TEX_PATH + 'map/map_icons.png',-1)
         if(m_img.shape[0] != 128 * RES_R or m_img.shape[1] != 128 * RES_R):
             m_o_img = cv2.imread(resource_path('map_icons.png'),-1)
@@ -700,8 +705,6 @@ def resizeTex():
             print(TEX_PATH + 'map/map_icons.png' + ' conversion is OK')
         #cv2.imshow("image", n_p_img)
         #cv2.waitKey(0)
-    except IOError:
-        print ("Error: fail to read particle")
 
     def changeHorseTex(file):
         h_img = cv2.imread(file,-1)
@@ -791,14 +794,17 @@ def resizeTex():
             #cv2.imshow("image", n_h_img)
             #cv2.waitKey(0)
 
-    horseList = (file for file in os.listdir(TEX_PATH + 'entity/horse/')
-             if os.path.isfile(os.path.join(TEX_PATH + 'entity/horse/', file)))
-    armorList = os.listdir(TEX_PATH + 'entity/horse/armor')
+    if(os.path.exists(TEX_PATH + 'entity/horse/')):
+        horseList = (file for file in os.listdir(TEX_PATH + 'entity/horse/')
+                 if file.endswith('.png'))
+        for horse in horseList:
+            changeHorseTex(TEX_PATH + 'entity/horse/' + horse)
 
-    for horse in horseList:
-        changeHorseTex(TEX_PATH + 'entity/horse/' + horse)
-    for armor in armorList:
-        changeHorseTex(TEX_PATH + 'entity/horse/armor/' + armor)
+        if(os.path.exists(TEX_PATH + 'entity/horse/armor')):
+            armorList = (file for file in os.listdir(TEX_PATH + 'entity/horse/armor')
+                     if file.endswith('.png'))
+            for armor in armorList:
+                changeHorseTex(TEX_PATH + 'entity/horse/armor/' + armor)
 
 '''
 ---------------------------------------------------------------------------
@@ -842,13 +848,13 @@ def zipPack():
 
 def main(pack,res_r = 1):
   init(pack, res_r)
-  unzipPack()
+  #unzipPack()
   changeFileName()
   changeFolderName()
   changeModel()
   resizeTex()
   changeInfo()
-  zipPack()
+  #zipPack()
   print ("ALL DONE!")
 
 if __name__ == '__main__':

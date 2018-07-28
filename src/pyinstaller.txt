@@ -1,0 +1,1 @@
+pyinstaller -F --add-data src/favicon.ico;. --add-data src/*.png;. -i src/favicon.ico src/convert_tool.py

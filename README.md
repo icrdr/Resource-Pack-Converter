@@ -10,7 +10,13 @@ It might not convert everything perfectly, however it offers a easiest way to ge
 - **For Creators**: it provides a starting pack from your old version.
 - **For Players**: you don't have to wait the pack's author to update.
 
-## Usage
+## Feature
+- super easy to use
+- all pack's resolution compatible
+- rename all files include **models**
+- generate new format textures from the selected resource pack(such as particles, horses, map icons...)
+
+## How to use
 - [Download released](https://github.com/icrdr/Resource-Pack-Converter/releases/)([mirror](https://www.dropbox.com/s/5k7w76mkbwogn5a/Resource_Pack_Converter.exe?dl=0))
 - Run Resource_Pack_Converter.exe
 - Select the resource pack

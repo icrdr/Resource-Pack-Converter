@@ -848,13 +848,13 @@ def zipPack():
 
 def main(pack,res_r = 1):
   init(pack, res_r)
-  #unzipPack()
+  unzipPack()
   changeFileName()
   changeFolderName()
   changeModel()
   resizeTex()
   changeInfo()
-  #zipPack()
+  zipPack()
   print ("ALL DONE!")
 
 if __name__ == '__main__':

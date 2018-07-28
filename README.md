@@ -12,8 +12,8 @@ It might not convert everything perfectly, however it offers a easiest way to ge
 ## Usage
 - [Download released](https://github.com/icrdr/Resource-Pack-Converter/releases/)([mirror](https://www.dropbox.com/s/5k7w76mkbwogn5a/Resource_Pack_Converter.exe?dl=0))
 - Run Resource_Pack_Converter.exe
-- Set the pack's resolution
 - Select the resource pack
+- Set the pack's resolution
 - Wait for converting
 
 **Please make me know if it not working properly.**

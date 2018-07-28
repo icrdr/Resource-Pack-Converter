@@ -4,7 +4,7 @@ a tool for converting minecraft's resource pack from 1.8-1.12 to 1.13
 There is a great number of changes to Minecraft 1.13 resource pack (Java Edition). That would be terrible to change all the files' name manually.
 Here is a list of the changes: https://minecraft.gamepedia.com/1.13/Flattening
 
-This tool will automatically **rename all files** & **convert all models** & **generate new format textures from the selected resource pack**(such as particles, horses, map icons...). I tested it for [Mizuno's 16 Craft](https://www.planetminecraft.com/texture_pack/mizunos-16-craft/) (my girlfriend's faverate pack) and [ZigZag](http://www.jmckiernan.com/), it works just fine.
+This tool will automatically convert all files include **models**. I tested it for [Mizuno's 16 Craft](https://www.planetminecraft.com/texture_pack/mizunos-16-craft/) (my girlfriend's faverate pack) and [ZigZag](http://www.jmckiernan.com/), it works just fine.
 
 ![in Mizuno's 16 Craft](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-29/56727928.jpg)
 ![in ZigZag](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-29/77056924.jpg)

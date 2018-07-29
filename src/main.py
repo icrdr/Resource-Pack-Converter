@@ -86,6 +86,8 @@ blockList.append(['quartz_block_chiseled', 'chiseled_quartz_block'])
 blockList.append(['quartz_block_chiseled_top', 'chiseled_quartz_block_top'])
 blockList.append(['quartz_block_lines', 'quartz_pillar'])
 blockList.append(['quartz_block_lines_top', 'quartz_pillar_top'])
+blockList.append(['quartz_outer_stairs', 'quartz_stairs_outer'])
+blockList.append(['quartz_inner_stairs', 'quartz_stairs_inner'])
 
 #BLOCKLIST： Crops
 cropList = [
@@ -588,8 +590,10 @@ def changeModel():
                  if file.endswith('.json'))
         for state in blockstateList:
             #for 1.13
+
             alter(MAIN_PATH + 'blockstates/' + state, '"model": "block/', '"model": "')
             alter(MAIN_PATH + 'blockstates/' + state, '"model": "', '"model": "block/')
+            alterAll(MAIN_PATH + 'blockstates/' + state)
 
     def changeTorchState(_str):
         try:

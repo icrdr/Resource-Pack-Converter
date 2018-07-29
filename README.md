@@ -16,6 +16,7 @@ It might not convert everything perfectly, however it offers a easiest way to ge
 ## Feature
 - super easy to use
 - all pack's resolution compatible
+- dynamic texture support
 - convert all files include **models**
 - generate new format textures from the selected resource pack(such as particles, horses, map icons...)
 

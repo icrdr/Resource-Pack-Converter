@@ -673,139 +673,146 @@ def resizeTex():
     def cutImg(img,y1,y2,x1,x2):
         return img[y1*RES_R:y2*RES_R, x1*RES_R:x2*RES_R, :]
 
-    if(os.path.exists(TEX_PATH + 'particle/particles.png')):
+    if(os.path.exists(TEX_PATH + 'particle/particles.png') and not(os.path.exists(TEX_PATH + 'particle/1.13'))):
         p_img = cv2.imread(TEX_PATH + 'particle/particles.png',-1)
-        if(p_img.shape[0] != 256 * RES_R or p_img.shape[1] != 256 * RES_R):
-            p_o_img = cv2.imread(resource_path('particles.png'),-1)
-            p_o_img = cv2.resize(p_o_img,(256 * RES_R, 256 * RES_R),interpolation=cv2.INTER_NEAREST)
+        p_img = cv2.resize(p_img,(128 * RES_R, 128 * RES_R),interpolation=cv2.INTER_NEAREST)
 
-            n_p_img = np.zeros((256 * RES_R, 256 * RES_R, 4), dtype=np.uint8)
-            n_p_img = overlayImg(p_img, n_p_img)
-            n_p_img = overlayImg(cutImg(p_o_img,104,112, 0,8), n_p_img,0,104)
-            n_p_img = overlayImg(cutImg(p_o_img,128,152, 0,88), n_p_img,0,128)
-            #print(n_p_img[:, : ,3])
-            cv2.imwrite(TEX_PATH + 'particle/particles.png', n_p_img)
-            print(TEX_PATH + 'particle/particles.png' + ' conversion is OK')
+        p_o_img = cv2.imread(resource_path('particles.png'),-1)
+        p_o_img = cv2.resize(p_o_img,(256 * RES_R, 256 * RES_R),interpolation=cv2.INTER_NEAREST)
+
+        n_p_img = np.zeros((256 * RES_R, 256 * RES_R, 4), dtype=np.uint8)
+        n_p_img = overlayImg(p_img, n_p_img)
+        n_p_img = overlayImg(cutImg(p_o_img,104,112, 0,8), n_p_img,0,104)
+        n_p_img = overlayImg(cutImg(p_o_img,128,152, 0,88), n_p_img,0,128)
+        #print(n_p_img[:, : ,3])
+        cv2.imwrite(TEX_PATH + 'particle/particles.png', n_p_img)
+        print(TEX_PATH + 'particle/particles.png' + ' conversion is OK')
+        open(TEX_PATH + 'particle/1.13','w')
         #cv2.imshow("image", n_p_img)
         #cv2.waitKey(0)
 
-    if(os.path.exists(TEX_PATH + 'map/map_icons.png')):
+    if(os.path.exists(TEX_PATH + 'map/map_icons.png') and not(os.path.exists(TEX_PATH + 'map/1.13'))):
         m_img = cv2.imread(TEX_PATH + 'map/map_icons.png',-1)
-        if(m_img.shape[0] != 128 * RES_R or m_img.shape[1] != 128 * RES_R):
-            m_o_img = cv2.imread(resource_path('map_icons.png'),-1)
-            m_o_img = cv2.resize(m_o_img,(128 * RES_R, 128 * RES_R),interpolation=cv2.INTER_NEAREST)
+        m_img = cv2.resize(m_img,(32 * RES_R, 32 * RES_R),interpolation=cv2.INTER_NEAREST)
 
-            n_m_img = np.zeros((128 * RES_R, 128 * RES_R, 4), dtype=np.uint8)
-            n_m_img = overlayImg(cutImg(m_img,0,8, 0,32), n_m_img,0,0)
-            n_m_img = overlayImg(cutImg(m_img,0,16, 8,32), n_m_img,32,0)
-            n_m_img = overlayImg(cutImg(m_img,16,24, 0,16), n_m_img,64,0)
-            n_m_img = overlayImg(cutImg(m_o_img,0,8, 80,128), n_m_img,80,0)
-            n_m_img = overlayImg(cutImg(m_o_img,8,16, 0,128), n_m_img,0,8)
-            #print(n_p_img[:, : ,3])
-            cv2.imwrite(TEX_PATH + 'map/map_icons.png', n_m_img)
-            print(TEX_PATH + 'map/map_icons.png' + ' conversion is OK')
+        m_o_img = cv2.imread(resource_path('map_icons.png'),-1)
+        m_o_img = cv2.resize(m_o_img,(128 * RES_R, 128 * RES_R),interpolation=cv2.INTER_NEAREST)
+
+        n_m_img = np.zeros((128 * RES_R, 128 * RES_R, 4), dtype=np.uint8)
+        n_m_img = overlayImg(cutImg(m_img,0,8, 0,32), n_m_img,0,0)
+        n_m_img = overlayImg(cutImg(m_img,0,16, 8,32), n_m_img,32,0)
+        n_m_img = overlayImg(cutImg(m_img,16,24, 0,16), n_m_img,64,0)
+        n_m_img = overlayImg(cutImg(m_o_img,0,8, 80,128), n_m_img,80,0)
+        n_m_img = overlayImg(cutImg(m_o_img,8,16, 0,128), n_m_img,0,8)
+        #print(n_p_img[:, : ,3])
+        cv2.imwrite(TEX_PATH + 'map/map_icons.png', n_m_img)
+        print(TEX_PATH + 'map/map_icons.png' + ' conversion is OK')
+        open(TEX_PATH + 'map/1.13','w')
         #cv2.imshow("image", n_p_img)
         #cv2.waitKey(0)
 
     def changeHorseTex(file):
         h_img = cv2.imread(file,-1)
-        if(h_img.shape[0] != 64 * RES_R or h_img.shape[1] != 64 * RES_R):
-            n_h_img = np.zeros((64 * RES_R, 64 * RES_R, 4), dtype=np.uint8)
+        h_img = cv2.resize(h_img,(128 * RES_R, 128 * RES_R),interpolation=cv2.INTER_NEAREST)
 
-            #head
-            n_h_img = overlayImg(cutImg(h_img,0,12, 0,24), n_h_img,0,13)
-            n_h_img = overlayImg(cutImg(h_img,0,12, 9,24), n_h_img,10,13)
-            n_h_img = overlayImg(cutImg(h_img,0,7, 14,17), n_h_img,16,13)
-            n_h_img = overlayImg(cutImg(h_img,7,12, 21,24), n_h_img,23,20)
+        n_h_img = np.zeros((64 * RES_R, 64 * RES_R, 4), dtype=np.uint8)
 
-            #ear
-            n_h_img = overlayImg(cutImg(h_img,12,20, 0,6), n_h_img,0,12)
-            n_h_img = overlayImg(cutImg(h_img,0,4, 0,6), n_h_img,19,16)
+        #head
+        n_h_img = overlayImg(cutImg(h_img,0,12, 0,24), n_h_img,0,13)
+        n_h_img = overlayImg(cutImg(h_img,0,12, 9,24), n_h_img,10,13)
+        n_h_img = overlayImg(cutImg(h_img,0,7, 14,17), n_h_img,16,13)
+        n_h_img = overlayImg(cutImg(h_img,7,12, 21,24), n_h_img,23,20)
 
-            #morth
-            n_h_img = overlayImg(cutImg(h_img,19,27, 25,43), n_h_img,0,25)
-            n_h_img = overlayImg(cutImg(h_img,32,34, 24,42), n_h_img,0,33)
-            n_h_img = overlayImg(cutImg(h_img,27,32, 33,37), n_h_img,9,25)
+        #ear
+        n_h_img = overlayImg(cutImg(h_img,12,20, 0,6), n_h_img,0,12)
+        n_h_img = overlayImg(cutImg(h_img,0,4, 0,6), n_h_img,19,16)
 
-            #neck
-            n_h_img = overlayImg(cutImg(h_img,21,33, 0,7), n_h_img,0,42)
-            n_h_img = overlayImg(cutImg(h_img,21,33, 8,12), n_h_img,7,42)
-            n_h_img = overlayImg(cutImg(h_img,21,33, 13,20), n_h_img,11,42)
-            n_h_img = overlayImg(cutImg(h_img,21,33, 20,24), n_h_img,18,42)
+        #morth
+        n_h_img = overlayImg(cutImg(h_img,19,27, 25,43), n_h_img,0,25)
+        n_h_img = overlayImg(cutImg(h_img,32,34, 24,42), n_h_img,0,33)
+        n_h_img = overlayImg(cutImg(h_img,27,32, 33,37), n_h_img,9,25)
 
-            n_h_img = overlayImg(cutImg(h_img,12,19, 8,16), n_h_img,7,35)
+        #neck
+        n_h_img = overlayImg(cutImg(h_img,21,33, 0,7), n_h_img,0,42)
+        n_h_img = overlayImg(cutImg(h_img,21,33, 8,12), n_h_img,7,42)
+        n_h_img = overlayImg(cutImg(h_img,21,33, 13,20), n_h_img,11,42)
+        n_h_img = overlayImg(cutImg(h_img,21,33, 20,24), n_h_img,18,42)
 
-            #horsehair
-            n_h_img = overlayImg(cutImg(h_img,4,20, 58,60), n_h_img,56,38)
-            n_h_img = overlayImg(cutImg(h_img,4,20, 62,64), n_h_img,58,38)
-            n_h_img = overlayImg(cutImg(h_img,4,20, 65,67), n_h_img,60,38)
-            n_h_img = overlayImg(cutImg(h_img,4,20, 67,69), n_h_img,62,38)
+        n_h_img = overlayImg(cutImg(h_img,12,19, 8,16), n_h_img,7,35)
 
-            n_h_img = overlayImg(cutImg(h_img,2,4, 62,66), n_h_img,58,36)
+        #horsehair
+        n_h_img = overlayImg(cutImg(h_img,4,20, 58,60), n_h_img,56,38)
+        n_h_img = overlayImg(cutImg(h_img,4,20, 62,64), n_h_img,58,38)
+        n_h_img = overlayImg(cutImg(h_img,4,20, 65,67), n_h_img,60,38)
+        n_h_img = overlayImg(cutImg(h_img,4,20, 67,69), n_h_img,62,38)
 
-            #body
-            n_h_img = overlayImg(cutImg(h_img,58,68, 0,22), n_h_img,0,54)
-            n_h_img = overlayImg(cutImg(h_img,58,68, 13,24), n_h_img,11,54)
+        n_h_img = overlayImg(cutImg(h_img,2,4, 62,66), n_h_img,58,36)
 
-            n_h_img = overlayImg(cutImg(h_img,58,68, 24,34), n_h_img,22,54)
+        #body
+        n_h_img = overlayImg(cutImg(h_img,58,68, 0,22), n_h_img,0,54)
+        n_h_img = overlayImg(cutImg(h_img,58,68, 13,24), n_h_img,11,54)
 
-            n_h_img = overlayImg(cutImg(h_img,58,68, 34,56), n_h_img,32,54)
-            n_h_img = overlayImg(cutImg(h_img,58,68, 47,57), n_h_img,43,54)
+        n_h_img = overlayImg(cutImg(h_img,58,68, 24,34), n_h_img,22,54)
 
-            n_h_img = overlayImg(cutImg(h_img,58,68, 58,68), n_h_img,54,54)
-            n_h_img = overlayImg(cutImg(h_img,34,56, 24,44), n_h_img,22,32)
-            n_h_img = overlayImg(cutImg(h_img,49,58, 24,44), n_h_img,22,45)
+        n_h_img = overlayImg(cutImg(h_img,58,68, 34,56), n_h_img,32,54)
+        n_h_img = overlayImg(cutImg(h_img,58,68, 47,57), n_h_img,43,54)
 
-            #chest
-            n_h_img = overlayImg(cutImg(h_img,34,45, 0,11), n_h_img,26,21)
-            n_h_img = overlayImg(cutImg(h_img,47,58, 11,22), n_h_img,37,21)
+        n_h_img = overlayImg(cutImg(h_img,58,68, 58,68), n_h_img,54,54)
+        n_h_img = overlayImg(cutImg(h_img,34,56, 24,44), n_h_img,22,32)
+        n_h_img = overlayImg(cutImg(h_img,49,58, 24,44), n_h_img,22,45)
 
-            #foot
-            n_h_img = overlayImg(cutImg(h_img,35,41, 97,113), n_h_img,48,25)
-            n_h_img = overlayImg(cutImg(h_img,49,51, 96,104), n_h_img,48,31)
-            n_h_img = overlayImg(cutImg(h_img,49,51, 96,104), n_h_img,56,31)
-            n_h_img = overlayImg(cutImg(h_img,55,58, 96,112), n_h_img,48,33)
-            n_h_img = overlayImg(cutImg(h_img,29,33, 101,105), n_h_img,52,21)
-            n_h_img = overlayImg(cutImg(h_img,51,55, 104,108), n_h_img,56,21)
+        #chest
+        n_h_img = overlayImg(cutImg(h_img,34,45, 0,11), n_h_img,26,21)
+        n_h_img = overlayImg(cutImg(h_img,47,58, 11,22), n_h_img,37,21)
 
-            #rein
-            n_h_img = overlayImg(cutImg(h_img,0,4, 74,80), n_h_img,29,5)
-            #n_h_img = overlayImg(cutImg(h_img,24,29, 81,83), n_h_img,1,7)
-            #n_h_img = overlayImg(cutImg(h_img,24,29, 81,83), n_h_img,25,2)
-            #n_h_img = overlayImg(cutImg(h_img,24,29, 86,88), n_h_img,17,7)
-            #n_h_img = overlayImg(cutImg(h_img,24,29, 86,88), n_h_img,19,2)
+        #foot
+        n_h_img = overlayImg(cutImg(h_img,35,41, 97,113), n_h_img,48,25)
+        n_h_img = overlayImg(cutImg(h_img,49,51, 96,104), n_h_img,48,31)
+        n_h_img = overlayImg(cutImg(h_img,49,51, 96,104), n_h_img,56,31)
+        n_h_img = overlayImg(cutImg(h_img,55,58, 96,112), n_h_img,48,33)
+        n_h_img = overlayImg(cutImg(h_img,29,33, 101,105), n_h_img,52,21)
+        n_h_img = overlayImg(cutImg(h_img,51,55, 104,108), n_h_img,56,21)
 
-            #tail?
-            n_h_img = overlayImg(np.rot90(cutImg(h_img,10,14, 34,41),-1), n_h_img,42,47)
-            n_h_img = overlayImg(np.rot90(cutImg(h_img,3,10, 31,37),-2), n_h_img,46,47)
-            n_h_img = overlayImg(np.rot90(cutImg(h_img,10,14, 24,31),1), n_h_img,52,47)
+        #rein
+        n_h_img = overlayImg(cutImg(h_img,0,4, 74,80), n_h_img,29,5)
+        #n_h_img = overlayImg(cutImg(h_img,24,29, 81,83), n_h_img,1,7)
+        #n_h_img = overlayImg(cutImg(h_img,24,29, 81,83), n_h_img,25,2)
+        #n_h_img = overlayImg(cutImg(h_img,24,29, 86,88), n_h_img,17,7)
+        #n_h_img = overlayImg(cutImg(h_img,24,29, 86,88), n_h_img,19,2)
 
-            n_h_img = overlayImg(np.rot90(cutImg(h_img,14,18, 48,55),-1), n_h_img,42,40)
-            n_h_img = overlayImg(np.rot90(cutImg(h_img,7,14, 45,51),-2), n_h_img,46,40)
-            n_h_img = overlayImg(np.rot90(cutImg(h_img,14,18, 38,45),1), n_h_img,52,40)
-            n_h_img = overlayImg(cutImg(h_img,14,18, 45,48), n_h_img,46,36)
+        #tail?
+        n_h_img = overlayImg(np.rot90(cutImg(h_img,10,14, 34,41),-1), n_h_img,42,47)
+        n_h_img = overlayImg(np.rot90(cutImg(h_img,3,10, 31,37),-2), n_h_img,46,47)
+        n_h_img = overlayImg(np.rot90(cutImg(h_img,10,14, 24,31),1), n_h_img,52,47)
 
-            #sella
-            n_h_img = overlayImg(cutImg(h_img,0,9, 88,98), n_h_img,35,0)
-            n_h_img = overlayImg(cutImg(h_img,9,11, 89,98), n_h_img,26,9)
-            n_h_img = overlayImg(cutImg(h_img,9,11, 89,98), n_h_img,45,9)
+        n_h_img = overlayImg(np.rot90(cutImg(h_img,14,18, 48,55),-1), n_h_img,42,40)
+        n_h_img = overlayImg(np.rot90(cutImg(h_img,7,14, 45,51),-2), n_h_img,46,40)
+        n_h_img = overlayImg(np.rot90(cutImg(h_img,14,18, 38,45),1), n_h_img,52,40)
+        n_h_img = overlayImg(cutImg(h_img,14,18, 45,48), n_h_img,46,36)
 
-            cv2.imwrite(file, n_h_img)
-            print(file + ' conversion is OK')
-            #cv2.imshow("image", n_h_img)
-            #cv2.waitKey(0)
+        #sella
+        n_h_img = overlayImg(cutImg(h_img,0,9, 88,98), n_h_img,35,0)
+        n_h_img = overlayImg(cutImg(h_img,9,11, 89,98), n_h_img,26,9)
+        n_h_img = overlayImg(cutImg(h_img,9,11, 89,98), n_h_img,45,9)
 
-    if(os.path.exists(TEX_PATH + 'entity/horse/')):
+        cv2.imwrite(file, n_h_img)
+        print(file + ' conversion is OK')
+        #cv2.imshow("image", n_h_img)
+        #cv2.waitKey(0)
+
+    if(os.path.exists(TEX_PATH + 'entity/horse/') and not(os.path.exists(TEX_PATH + 'entity/horse/1.13'))):
         horseList = (file for file in os.listdir(TEX_PATH + 'entity/horse/')
                  if file.endswith('.png'))
         for horse in horseList:
             changeHorseTex(TEX_PATH + 'entity/horse/' + horse)
+        open(TEX_PATH + 'entity/horse/1.13','w')
 
-        if(os.path.exists(TEX_PATH + 'entity/horse/armor')):
+        if(os.path.exists(TEX_PATH + 'entity/horse/armor') and not(os.path.exists(TEX_PATH + 'entity/horse/armor/1.13'))):
             armorList = (file for file in os.listdir(TEX_PATH + 'entity/horse/armor')
                      if file.endswith('.png'))
             for armor in armorList:
                 changeHorseTex(TEX_PATH + 'entity/horse/armor/' + armor)
+            open(TEX_PATH + 'entity/horse/armor/1.13','w')
 
 '''
 ---------------------------------------------------------------------------

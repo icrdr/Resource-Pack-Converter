@@ -10,6 +10,62 @@ from onefile import *
 blockList = []
 itemList = []
 entityList = []
+modelList = [
+    ['cobblestone_wall_mossy_inventory','mossy_cobblestone_wall_inventory'],
+    ['grass','grass_block'],
+    ['grass_snowed','grass_block_snow'],
+    ['tall_grass','grass'],
+    ['double_grass_bottom','tall_grass_bottom'],
+    ['double_top_bottom','tall_top_bottom'],
+    ['unlit_redstone_torch','redstone_torch_off'],
+    ['unlit_redstone_torch_wall','redstone_wall_torch_off'],
+    ['lit_redstone_torch','redstone_torch'],
+    ['lit_redstone_torch_wall','redstone_wall_torch'],
+    ['torch','template_torch'],
+    ['torch_wall','torch_wall'],
+    ['normal_torch','torch'],
+    ['normal_torch_wall','wall_torch'],
+    ['wall_side','template_wall_side'],
+    ['wall_post','template_wall_post'],
+    ['stonebrick_mossy','mossy_stone_bricks'],
+
+    ['activator_rail_flat','activator_rail'],
+    ['activator_rail_active_flat','activator_rail_on'],
+    ['activator_rail_raised_ne','activator_rail_raised_ne'],
+    ['activator_rail_active_raised_ne','activator_rail_on_raised_ne'],
+    ['activator_rail_raised_sw','activator_rail_raised_sw'],
+    ['activator_rail_active_raised_sw','activator_rail_on_raised_sw'],
+
+    ['detector_rail_flat','detector_rail'],
+    ['detector_rail_powered_flat','detector_rail_on'],
+    ['detector_rail_raised_ne','detector_rail_raised_ne'],
+    ['detector_rail_powered_raised_ne','detector_rail_on_raised_ne'],
+    ['detector_rail_raised_sw','detector_rail_raised_sw'],
+    ['detector_rail_powered_raised_sw','detector_rail_on_raised_sw'],
+
+    ['golden_rail_flat','powered_rail'],
+    ['golden_rail_active_flat','powered_rail_on'],
+    ['golden_rail_raised_ne','powered_rail_raised_ne'],
+    ['golden_rail_active_raised_ne','powered_rail_on_raised_ne'],
+    ['golden_rail_raised_sw','powered_rail_raised_sw'],
+    ['golden_rail_active_raised_sw','powered_rail_on_raised_sw'],
+
+    ['normal_rail_curved','rail_corner'],
+    ['normal_rail_flat','rail'],
+
+    ['rail_raised_ne','template_rail_raised_ne'],
+    ['rail_raised_sw','template_rail_raised_sw'],
+
+    ['normal_rail_raised_ne','rail_raised_ne'],
+    ['normal_rail_raised_sw','rail_raised_sw']
+    ]
+
+stateList = [
+    ['grass','grass_block'],
+    ['tall_grass','grass'],
+    ['double_grass','tall_grass'],
+    ['golden_rail','powered_rail']
+    ]
 '''
 ---------------------------------------------------------------------------
                             change list
@@ -80,6 +136,8 @@ blockList.append(['grass_top', 'grass_block_top'])
 blockList.append(['dirt_podzol_side', 'podzol_side'])
 blockList.append(['dirt_podzol_top', 'podzol_top'])
 blockList.append(['farmland_dry', 'farmland'])
+blockList.append(['grass_normal', 'grass_block'])
+blockList.append(['grass_snowed', 'grass_block_snow'])
 
 #BLOCKLIST： Quartz
 blockList.append(['quartz_block_chiseled', 'chiseled_quartz_block'])
@@ -134,6 +192,8 @@ blockList.append(['door_iron_lower', 'iron_door_bottom'])
 blockList.append(['door_iron_upper', 'iron_door_top'])
 blockList.append(['trapdoor', 'oak_trapdoor'])
 blockList.append(['sapling_roofed_oak', 'dark_oak_sapling'])
+blockList.append(['dark_oak_door_bottom_rh', 'dark_oak_door_bottom_hinge'])
+blockList.append(['dark_oak_door_top_rh', 'dark_oak_door_top_hinge'])
 
 #BLOCKLIST： Plants
 flowerList = [
@@ -184,14 +244,46 @@ blockList.append(['mushroom_red', 'red_mushroom'])
 blockList.append(['mushroom_brown', 'brown_mushroom'])
 
 #BLOCKLIST： Rails
+#in texture
+powerList = [
+    'detector',
+    'activator'
+]
+for _str in powerList:
+    blockList.append(['rail_' + _str, _str + '_rail'])
+    blockList.append(['rail_' + _str +'_powered', _str + '_rail_on'])
+
 blockList.append(['rail_normal', 'rail'])
 blockList.append(['rail_normal_turned', 'rail_corner'])
-blockList.append(['rail_activator', 'activator_rail'])
-blockList.append(['rail_activator_powered', 'activator_rail_on'])
-blockList.append(['rail_detector', 'detector_rail'])
-blockList.append(['rail_detector_powered', 'detector_rail_on'])
 blockList.append(['rail_golden', 'powered_rail'])
 blockList.append(['rail_golden_powered', 'powered_rail_on'])
+
+#in other
+blockList.append(['normal_rail_curved', 'rail_corner'])
+blockList.append(['normal_rail_flat', 'rail'])
+blockList.append(['normal_rail_raised_ne', 'rail_raised_ne'])
+blockList.append(['normal_rail_raised_sw', 'rail_raised_sw'])
+
+blockList.append(['activator_rail_flat', 'activator_rail'])
+blockList.append(['activator_rail_active_flat', 'activator_rail_on'])
+blockList.append(['activator_rail_active_raised_ne', 'activator_rail_on_raised_ne'])
+blockList.append(['activator_rail_active_raised_sw', 'activator_rail_on_raised_sw'])
+blockList.append(['activator_rail_raised_ne', 'activator_rail_raised_ne'])
+blockList.append(['activator_rail_raised_sw', 'activator_rail_raised_sw'])
+
+blockList.append(['detector_rail_flat', 'detector_rail'])
+blockList.append(['detector_rail_powered_rail', 'detector_rail_on'])
+blockList.append(['detector_rail_powered_raised_ne', 'detector_rail_on_raised_ne'])
+blockList.append(['detector_rail_powered_raised_sw', 'detector_rail_on_raised_sw'])
+blockList.append(['detector_rail_raised_ne', 'detector_rail_raised_ne'])
+blockList.append(['detector_rail_raised_sw', 'detector_rail_raised_sw'])
+
+blockList.append(['golden_rail_flat', 'powered_rail'])
+blockList.append(['golden_rail_active_flat', 'powered_rail_on'])
+blockList.append(['golden_rail_active_raised_ne', 'powered_rail_on_raised_ne'])
+blockList.append(['golden_rail_active_raised_sw', 'powered_rail_on_raised_sw'])
+blockList.append(['golden_rail_raised_ne', 'powered_rail_raised_ne'])
+blockList.append(['golden_rail_raised_sw', 'powered_rail_raised_sw'])
 
 #BLOCKLIST： Fire
 blockList.append(['fire_layer_0', 'fire_0'])
@@ -261,7 +353,6 @@ itemList.append(['bow_standby', 'bow'])
 itemList.append(['fishing_rod_uncast', 'fishing_rod'])
 #ITEMLIST： Doors
 doorList = [
-    'wood',
     'iron',
     'birch',
     'jungle',
@@ -273,6 +364,7 @@ doorList = [
 for _str in doorList:
     itemList.append(['door_' + _str, _str + '_door'])
 
+itemList.append(['door_wood', 'oak_door'])
 #ITEMLIST： Food
 rawList = [
     'porkchop',
@@ -470,6 +562,10 @@ def unzipPack():
                             change files'name
 ---------------------------------------------------------------------------
 '''
+'''
+                            static textures' name
+---------------------------------------------------------------------------
+'''
 def changeFileName():
     print ("changing texs'name...")
     for name in blockList:
@@ -478,7 +574,7 @@ def changeFileName():
             os.rename(block_path + name[0] + '.png', block_path + name[1] + '.png')
             print (name[0] + " changed to " + name[1])
         except IOError:
-            print ("Error: fail to read " + name[0])
+            print ("Error: fail to read " + name[0] + '.png')
 
     for name in itemList:
         try:
@@ -486,7 +582,7 @@ def changeFileName():
             os.rename(item_path + name[0] + '.png', item_path + name[1] + '.png')
             print (name[0] + " changed to " + name[1])
         except IOError:
-            print ("Error: fail to read " + name[0])
+            print ("Error: fail to read " + name[0] + '.png')
 
     for name in entityList:
         try:
@@ -494,17 +590,21 @@ def changeFileName():
             os.rename(entity_path + name[0] + '.png', entity_path + name[1] + '.png')
             print (name[0] + " changed to " + name[1])
         except IOError:
-            print ("Error: fail to read " + name[0])
+            print ("Error: fail to read " + name[0] + '.png')
 
     #print ("static texs'name conversion is completed!")
 
+    '''
+                                dynamic textures' name
+    ---------------------------------------------------------------------------
+    '''
     for name in blockList:
         try:
             #change file name (animations?)
             os.rename(block_path + name[0] + '.png.mcmeta', block_path + name[1] + '.png.mcmeta')
             print (name[0] + " changed to " + name[1])
         except IOError:
-            print ("Error: fail to read " + name[0])
+            print ("Error: fail to read " + name[0] + '.png.mcmeta')
 
     for name in itemList:
         try:
@@ -512,7 +612,7 @@ def changeFileName():
             os.rename(item_path + name[0] + '.png.mcmeta', item_path + name[1] + '.png.mcmeta')
             print (name[0] + " changed to " + name[1])
         except IOError:
-            print ("Error: fail to read " + name[0])
+            print ("Error: fail to read " + name[0] + '.png.mcmeta')
 
     for name in entityList:
         try:
@@ -520,13 +620,43 @@ def changeFileName():
             os.rename(entity_path + name[0] + '.png.mcmeta', entity_path + name[1] + '.png.mcmeta')
             print (name[0] + " changed to " + name[1])
         except IOError:
-            print ("Error: fail to read " + name[0])
-
+            print ("Error: fail to read " + name[0] + '.png.mcmeta')
     #print ("dynamic texs'name conversion is completed!")
-    try:
-        os.rename(MAIN_PATH + 'models/block/cobblestone_wall_mossy_inventory.json',MAIN_PATH + 'models/block/mossy_cobblestone_wall_inventory.json')
-    except IOError:
-        print ("Error: fail to read cobblestone_wall_mossy_inventory")
+
+    '''
+                                models' name
+    ---------------------------------------------------------------------------
+    '''
+    for name in modelList:
+        try:
+            os.rename(
+                MAIN_PATH + 'models/block/' + name[0] + '.json',
+                MAIN_PATH + 'models/block/' + name[1] + '.json'
+                )
+        except IOError:
+            print ("Error: fail to read" + name[0] + '.json')
+
+    for name in modelList:
+        try:
+            os.rename(
+                MAIN_PATH + 'models/item/' + name[0] + '.json',
+                MAIN_PATH + 'models/item/' + name[1] + '.json'
+                )
+        except IOError:
+            print ("Error: fail to read" + name[0] + '.json')
+    '''
+                                bloackstates' name
+    ---------------------------------------------------------------------------
+    '''
+    for name in stateList:
+        try:
+            os.rename(
+                MAIN_PATH + 'blockstates/' + name[0] + '.json',
+                MAIN_PATH + 'blockstates/' + name[1] + '.json',
+                )
+        except IOError:
+            print ("Error: fail to read " + name[0] + '.json')
+
 '''
 ---------------------------------------------------------------------------
                             change folders'name
@@ -544,6 +674,7 @@ def changeFolderName():
 
     except IOError:
         pass
+
 '''
 ---------------------------------------------------------------------------
                      change state/model files'content
@@ -564,6 +695,7 @@ def changeModel():
                 f.write(file_data)
         except:
             print(file + "fail to replace name in content")
+
     def alterAll(file):
         for name in blockList:
             alter(file, '/' + name[0] + '"', '/' + name[1] + '"')
@@ -573,10 +705,20 @@ def changeModel():
         alter(file, 'items/', 'item/')
         print (file + " is OK")
 
+    '''
+                                models' content
+    ---------------------------------------------------------------------------
+    '''
     if(os.path.exists(MAIN_PATH + 'models/block/')):
         blockModelList = (file for file in os.listdir(MAIN_PATH + 'models/block/')
                  if file.endswith('.json'))
         for model in blockModelList:
+            for name in modelList:
+                alter(
+                    MAIN_PATH + 'models/block/' + model,
+                    '"parent": "block/' + name[0] + '"',
+                    '"parent": "block/' + name[1] + '"')
+
             alterAll(MAIN_PATH + 'models/block/' + model)
 
     if(os.path.exists(MAIN_PATH + 'models/item/')):
@@ -585,12 +727,15 @@ def changeModel():
         for model in itemModelList:
             alterAll(MAIN_PATH + 'models/item/' + model)
 
+    '''
+                               blockstates' content
+    ---------------------------------------------------------------------------
+    '''
     if(os.path.exists(MAIN_PATH + 'blockstates/')):
         blockstateList = (file for file in os.listdir(MAIN_PATH + 'blockstates/')
                  if file.endswith('.json'))
         for state in blockstateList:
             #for 1.13
-
             alter(MAIN_PATH + 'blockstates/' + state, '"model": "block/', '"model": "')
             alter(MAIN_PATH + 'blockstates/' + state, '"model": "', '"model": "block/')
             alterAll(MAIN_PATH + 'blockstates/' + state)
@@ -622,40 +767,48 @@ def changeModel():
 
     changeTorchState('')
     changeTorchState('redstone_')
+    railList = [
+        'detector_',
+        'powered_',
+        'activator_'
+        '',
+        ]
 
     def changeRailModel(_str):
         if (os.path.exists(MAIN_PATH + 'models/block/template_rail_raised_' + _str + '.json')):
-            return false
+            return False
         try:
             os.rename(
                 MAIN_PATH + 'models/block/rail_raised_' + _str + '.json',
                 MAIN_PATH + 'models/block/template_rail_raised_' + _str + '.json'
                 )
 
-            railList = [
-                'detector_',
-                'powered_',
-                'activator_'
-                '',
-                ]
-
             for _type in railList:
-                rail_json = {
+                rail_raised_json = {
                     "parent": "block/template_rail_raised_" + _str,
                     "textures": {
                         "rail": "block/" + _type + "rail"
                     }
                 }
-                    #print(torch_json)
+
                 with open(MAIN_PATH + 'models/block/' + _type + 'rail_raised_'+ _str+ '.json','w') as dump_f:
-                    json.dump(rail_json,dump_f)
+                    json.dump(rail_raised_json,dump_f)
+
+                rail_on_raised_json = {
+                    "parent": "block/template_rail_raised_" + _str,
+                    "textures": {
+                        "rail": "block/" + _type + "rail_on"
+                    }
+                }
+
+                with open(MAIN_PATH + 'models/block/' + _type + 'rail_on_raised_'+ _str+ '.json','w') as dump_f:
+                    json.dump(rail_on_raised_json,dump_f)
 
         except IOError:
             print ("Error: fail to read " + _str + " rail model")
 
-    changeRailModel('sw')
-    changeRailModel('ne')
-
+    #changeRailModel('sw')
+    #changeRailModel('ne')
 '''
 ---------------------------------------------------------------------------
                            resize change tex

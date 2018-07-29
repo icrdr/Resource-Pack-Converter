@@ -6,8 +6,10 @@ Here is a list of the changes: https://minecraft.gamepedia.com/1.13/Flattening
 
 This tool will automatically convert all files include **models**. I tested it for [Mizuno's 16 Craft](https://www.planetminecraft.com/texture_pack/mizunos-16-craft/) (my girlfriend's faverate pack) and [ZigZag](http://www.jmckiernan.com/), it works just fine.
 
-![in Mizuno's 16 Craft](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-29/61290008.jpg)
-![in ZigZag](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-29/61663261.jpg)
+![in Mizuno's 16 Craft](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-30/16950485.jpg)
+![in ZigZag](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-30/34636895.jpg)
+![in Conquest](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-30/55938063.jpg)
+![in Rodrigo's Pack ](http://1mupic.oss-cn-beijing.aliyuncs.com/18-7-30/38536659.jpg)
 
 It might not convert everything perfectly, however it offers a easiest way to get your pack compatible with 1.13 quickly.
 - **For Creators**: it provides a starting pack from your old version.

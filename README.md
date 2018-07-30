@@ -21,7 +21,7 @@ This tool will automatically convert all files include **models**. I tested it f
 
 ## How to use
 - [Download released](https://github.com/icrdr/Resource-Pack-Converter/releases/) ([mirror](https://www.dropbox.com/sh/a3uvn4e6neres0a/AABzY3vAp4eTEmC7pUR6Pk0Fa?dl=0))
-- Run Resource_Pack_Converter.exe
+- Run Resource-Pack-Converter.exe
 - Set the pack's resolution
 - Wait for converting
 

@@ -66,7 +66,9 @@ modelList = [
 
     ['lever_off', 'lever_on'],
     ['quartz_outer_stairs', 'quartz_stairs_outer'],
-    ['quartz_inner_stairs', 'quartz_stairs_inner']
+    ['quartz_inner_stairs', 'quartz_stairs_inner'],
+
+    ['reeds', 'sugar_cane']
     ]
 
 stateList = [
@@ -88,7 +90,9 @@ stateList = [
     ['mossy_stonebrick','mossy_stone_bricks'],
     ['chiseled_stonebrick','chiseled_stone_bricks'],
     ['cracked_stonebrick','cracked_stone_bricks'],
-    ['wooden_button', 'oak_button']
+    ['wooden_button', 'oak_button'],
+
+    ['reeds', 'sugar_cane']
     ]
 '''
 ---------------------------------------------------------------------------

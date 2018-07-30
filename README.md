@@ -12,8 +12,8 @@ This tool will automatically convert all files include **models**. I tested it f
 ![in Rodrigo's Pack ](https://github.com/icrdr/Resource-Pack-Converter/raw/master/img/2.png)
 
 It might not convert everything perfectly, however it offers a easiest way to get your pack compatible with 1.13 quickly.
-- **For Creators**: it provides a starting pack from your old version.
-- **For Players**: you don't have to wait the pack's author to update.
+    **For Creators**: it provides a starting pack from your old version.
+    **For Players**: you don't have to wait the pack's author to update.
 
 ## Feature
 - super easy to use

@@ -2,12 +2,10 @@ from tkinter import ttk
 from tkinter import filedialog
 from tkinter import messagebox
 import tkinter as tk
-from main import main
+from main import main, conversion
 import math
 import sys
 from onefile import *
-
-
 
 def center_window(win, width=300, height=200):
     # get screen width and height
@@ -23,29 +21,34 @@ def selectRes():
 
 def convertionStart():
     res_win.withdraw()
-    '''progress_win = tk.Toplevel(root)
-    center_window(progress_win, 270, 60)
-    display = tk.Label(progress_win, text="Humm, see a new window !").pack()
-    downloaded = tk.IntVar()
-    downloaded.set(50)
-    mpb = ttk.Progressbar(
-        progress_win,
-        orient ="horizontal",
-        maximum = 100,
-        variable = downloaded,
-        mode ="determinate").pack(fill=tk.BOTH)'''
-    main(pack[:-4], res_r.get())
+    conversion(res_r.get())
     root.deiconify()
-    messagebox.showinfo(title='success', message='conversion is done!')
+    center_window(root, 270, 120)
+    messagebox.showinfo(title='success', message='Conversion is Done!')
 
 def selectPack():
     global pack
     pack = filedialog.askopenfilename(initialdir = "./",title = "Select Pack",filetypes = (("resource pack","*.zip"),("all files","*.*")))
     if(pack):
         root.withdraw()
-        res_win.deiconify()
-        center_window(res_win, 270, 80)
-        #progress_win.withdraw()
+        convert = main(pack[:-4])
+        if(convert == -1):
+            print ("this pack is already compatible with 1.13")
+            root.deiconify()
+            center_window(root, 270, 120)
+            messagebox.showwarning(title='warning', message="This pack is already compatible with 1.13, please select other!")
+        elif(convert == 0):
+            print ("please set it manually")
+            res_win.deiconify()
+            center_window(res_win, 270, 80)
+            messagebox.showwarning(title='warning', message="Fail to detect the pack's resolution, please set it manually!")
+        else:
+            print ("next one?")
+            root.deiconify()
+            center_window(root, 270, 120)
+            messagebox.showinfo(title='success', message='Conversion is Done!')
+            return False
+
     else:
         print ('select pack to start conversion')
 
@@ -54,21 +57,22 @@ def show_values(value=None):
     #print (res_r.get())
 
 root = tk.Tk()
-root.title("fit to 1.13 tool")
+root.title("Resource Pack Converter")
 #root.geometry('500x300+500+200')
 root.iconbitmap(resource_path('favicon.ico'))
 root.resizable(width=False, height=False)
-center_window(root, 270, 75)
-info1_label = tk.Label(root, text="step1 select resource pack").pack()
-info2_label = tk.Label(root, text="step2 set pack's resolution").pack()
+center_window(root, 270, 120)
 btn_start = tk.Button(
     root,
     text='Select Pack',
-    width=60,
+    width=50,
+    height=50,
     command=selectPack
     ).pack()
 
 res_win = tk.Toplevel(root)
+res_win.title("Set Resolution")
+res_win.iconbitmap(resource_path('favicon.ico'))
 res_win.resizable(width=False, height=False)
 center_window(res_win, 270, 80)
 

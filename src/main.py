@@ -150,7 +150,7 @@ def changeFileName():
         except IOError:
             print ("Error: fail to read" + name[0] + '.json')
 
-    for name in modelList:
+    for name in stateList:
         try:
             os.rename(
                 MAIN_PATH + 'models/item/' + name[0] + '.json',

@@ -259,18 +259,27 @@ def changeModel():
 
         if(os.path.exists(MAIN_PATH + 'models/block/grass_normal.json')):
             with open(MAIN_PATH + 'models/block/grass_normal.json','r') as f:
-                grass_block_tex = json.loads("\n".join(modifyJson(f)))['textures']
+                grass_normal_json = json.loads("\n".join(modifyJson(f)))
+            if "textures" in grass_json:
+                grass_block_tex = grass_normal_json["textures"]
+            else:
+                grass_block_tex = grass_block_json["textures"]
         else:
-            grass_block_tex = {
-                "particle": "block/dirt",
-                "bottom": "block/dirt",
-                "top": "block/grass_block_top",
-                "side": "block/grass_block_side",
-                "overlay": "block/grass_block_side_overlay"
-            }
-        if 'textures' not in grass_block_json:
-            grass_block_json['textures'] = grass_block_tex
-
+            grass_block_tex = grass_block_json["textures"]
+            
+        if "particle" not in grass_block_tex:
+            grass_block_tex["particle"] = "block/dirt"
+        if "bottom" not in grass_block_tex:
+            grass_block_tex["bottom"] = "block/dirt"
+        if "top" not in grass_block_tex:
+            grass_block_tex["top"] = "block/grass_block_top"
+        if "side" not in grass_block_tex:
+            grass_block_tex["side"] = "block/grass_block_side"
+        if "overlay" not in grass_block_tex:
+            grass_block_tex["overlay"] = "block/grass_block_side_overlay"
+        
+        grass_block_json["textures"] = grass_block_tex
+        grass_block_json["parent"] = "block/block"
 
         with open(MAIN_PATH + 'models/block/grass_block.json','w') as dump_f:
             json.dump(grass_block_json,dump_f)

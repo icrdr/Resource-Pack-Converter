@@ -7,6 +7,9 @@ import math
 import sys
 from onefile import *
 
+import os
+print (os.getcwd())
+
 def center_window(win, width=300, height=200):
     # get screen width and height
     screen_width = root.winfo_screenwidth()
@@ -62,14 +65,14 @@ root.title("Resource Pack Converter")
 root.iconbitmap(resource_path('favicon.ico'))
 root.resizable(width=False, height=False)
 center_window(root, 270, 120)
-btn_start = tk.Button(
+btn_select = tk.Button(
     root,
     text='Select Pack',
     width=50,
     height=50,
     command=selectPack
-    ).pack()
-
+    )
+btn_select.pack()
 res_win = tk.Toplevel(root)
 res_win.title("Set Resolution")
 res_win.iconbitmap(resource_path('favicon.ico'))
@@ -99,7 +102,8 @@ btn_start = tk.Button(
     text='Confirm',
     width=60,
     command=convertionStart
-    ).pack()
+    )
+btn_start.pack()
 res_win.withdraw()
 
 root.mainloop()

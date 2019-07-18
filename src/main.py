@@ -21,11 +21,11 @@ def detectRes():
 
     tex = Image.open(searchfold + selected)
     print(tex.size)
-    ro = 1
+    ro = 0
     while math.pow(2, ro) < (tex.size[0]/16):
         ro += 1
     print('resolution: ' +  str(tex.size[0]) + '  ro: ' + str(ro))
-    if (ro<1):ro=1
+    if (ro<0):ro=0
     return ro
 
 def alter(f, old_str, new_str):

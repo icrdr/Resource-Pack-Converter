@@ -21,7 +21,9 @@ def detectRes():
 
     tex = Image.open(searchfold + selected)
     print(tex.size)
-    ro = int(math.sqrt(tex.size[0]/16))
+    ro = 1
+    while math.pow(2, ro) < (tex.size[0]/16):
+        ro += 1
     print('resolution: ' +  str(tex.size[0]) + '  ro: ' + str(ro))
     if (ro<1):ro=1
     return ro
@@ -693,7 +695,7 @@ def main(pack):
 def conversion(res_r):
     global RES_R
     if(res_r == 0):res_r = 1
-    RES_R = int(math.pow(2, res_r)-1)
+    RES_R = int(math.pow(2, res_r))
     changeFileName()
     changeFolderName()
     changeModel()
